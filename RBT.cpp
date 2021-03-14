@@ -404,9 +404,14 @@ public:
 
 int main() {
     RBT<int>* tree = new RBT<int>;
-	for (int i = 1; i <= 20; i++) {
+	for (int i = 1; i <= 20; i += 2) {
 		tree->insert(i);
 	}
+
+	for (int i = 2; i <= 20; i += 2) {
+		tree->insert(i);
+	}
+
 	cout << tree->size() << '\n';
 	tree->display();
 	cout << '\n';
