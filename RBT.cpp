@@ -7,6 +7,7 @@
 #define RIGHT 1
 
 using namespace std;
+using namespace std::chrono;
 
 template<class T>
 class RBT_node {
@@ -113,7 +114,6 @@ private:
 		if (node == NULL) {
 			return false;
 		}
-
 		if (node->data == data) {
 			return true;
 		}
@@ -277,6 +277,13 @@ private:
 		delete root;
 	}
 
+	T sum(RBT_node<T>* node) {
+		if (node == NULL) {
+			return 0;
+		}
+		return sum(node->left) + node->data + sum(node->right);
+	}
+
 public:
 	RBT() {
 		root = NULL;
@@ -394,33 +401,13 @@ public:
 		display(root);
 	}
 
-	void clear() override{
+	void clear() override {
 		clear(root);
 		root = NULL;
 		_size = 0;
 	}
+
+	T sum() override {
+		return sum(root);
+	}
 };
-
-int main() {
-    RBT<int>* tree = new RBT<int>;
-	for (int i = 1; i <= 20; i += 2) {
-		tree->insert(i);
-	}
-
-	for (int i = 2; i <= 20; i += 2) {
-		tree->insert(i);
-	}
-
-	cout << tree->size() << '\n';
-	tree->display();
-	cout << '\n';
-	for (int i = -5; i <= 12; i++) {
-		tree->erase(i);
-	}
-	tree->clear();
-	tree->display();
-	cout << '\n';
-	cout << tree->size();
-	cout << '\n';
-	delete tree;
-} 
