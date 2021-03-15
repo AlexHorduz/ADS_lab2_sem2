@@ -8,4 +8,5 @@ public:
 	virtual bool erase(T data) = 0;
 	virtual int size() = 0;
 	virtual void clear() = 0;
+	virtual T sum() = 0;
 };
