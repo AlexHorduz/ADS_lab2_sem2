@@ -289,7 +289,6 @@ public:
 	}
 
 	virtual ~RBT() {
-		cout << "Invoking";
 		clear();
 	}
 	
