@@ -379,11 +379,11 @@ public:
 		}
 	}
 
-	bool contains(T data) override { //TODO
+	bool contains(T data) override {
 		return contains(data, root);
 	}
 
-	bool erase(T data) override { //TODO
+	bool erase(T data) override {
 		if (!contains(data)) {
 			return false;
 		} else {
