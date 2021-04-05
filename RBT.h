@@ -6,7 +6,7 @@
 #define RIGHT 1
 
 template<class T>
-class RBT_node : public BST<T>{
+class RBT_node {
 public:
 	T data;
 	bool color;  //false - red, true - black
