@@ -142,6 +142,53 @@ private:
 	}
 
 
+	void rotate(RBT_node<T>* P, int dir) {
+		RBT_node<T>* GP = P->parent;
+		RBT_node<T>* C = P->getChild(1 - dir);
+		RBT_node<T>* CC = C->getChild(dir);
+
+		if (dir == LEFT) {
+			P->right = CC;
+		}
+		else {
+			P->left = CC;
+		}
+
+		if (CC != NULL) {
+			CC->parent = P;
+		}
+
+		if (dir == LEFT) {
+			C->left = P;
+		}
+		else {
+			C->right = P;
+		}
+
+		P->parent = C;
+		C->parent = GP;
+		if (GP != NULL) {
+			if (GP->left == P) {
+				GP->left = C;
+			}
+			else {
+				GP->right = C;
+			}
+		}
+		else {
+			this->root = C;
+		}
+	}
+
+	void rotateLeft(RBT_node<T>* P) {
+		rotate(P, LEFT);
+	}
+
+	void rotateRight(RBT_node<T>* P) {
+		rotate(P, RIGHT);
+	}
+
+
 	void deleteNode(RBT_node<T>* node) {
 		RBT_node<T>* toSwapWith = getSuccessor(node);
 
@@ -308,52 +355,6 @@ public:
 
 	virtual ~RBT() {
 		clear();
-	}
-
-	void rotate(RBT_node<T>* P, int dir) {
-		RBT_node<T>* GP = P->parent;
-		RBT_node<T>* C = P->getChild(1 - dir);
-		RBT_node<T>* CC = C->getChild(dir);
-
-		if (dir == LEFT) {
-			P->right = CC;
-		}
-		else {
-			P->left = CC;
-		}
-
-		if (CC != NULL) {
-			CC->parent = P;
-		}
-
-		if (dir == LEFT) {
-			C->left = P;
-		}
-		else {
-			C->right = P;
-		}
-
-		P->parent = C;
-		C->parent = GP;
-		if (GP != NULL) {
-			if (GP->left == P) {
-				GP->left = C;
-			}
-			else {
-				GP->right = C;
-			}
-		}
-		else {
-			this->root = C;
-		}
-	}
-
-	void rotateLeft(RBT_node<T>* P) {
-		rotate(P, LEFT);
-	}
-
-	void rotateRight(RBT_node<T>* P) {
-		rotate(P, RIGHT);
 	}
 
 	void insert(T data) override {
