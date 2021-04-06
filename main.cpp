@@ -12,21 +12,57 @@ int main() {
 	BST<long long>* tree = new RBT<long long>;
 	cout << "Red-Black Tree Stats:\n";
 	auto start_time = high_resolution_clock::now();
-	for (int i = 0; i < 1000000; i++) {
+	for (int i = 0; i < 100000; i++) {
 		tree->insert(i);
 	}
 	auto end_time = high_resolution_clock::now();
 	auto time = end_time - start_time;
-	cout << "Insertion of 1M elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
+	cout << "Insertion of 100K elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
+	tree->clear();
+	
+	start_time = high_resolution_clock::now();
+	for (int i = 0; i < 1000000; i++) {
+		tree->insert(i);
+	}
+	end_time = high_resolution_clock::now();
+	time = end_time - start_time;
+	cout << "Insertion of 1M elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n\n";
 
+
+	for (int i = 0; i < 100000; i++) {
+		tree->insert(i);
+	}
+	start_time = high_resolution_clock::now();
+	for (int i = 0; i < 100000; i++) {
+		tree->erase(i);
+	}
+	end_time = high_resolution_clock::now();
+	time = end_time - start_time;
+	cout << "Deletion of 100k elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
+	
+	for (int i = 0; i < 1000000; i++) {
+		tree->insert(i);
+	}
 	start_time = high_resolution_clock::now();
 	for (int i = 0; i < 1000000; i++) {
 		tree->erase(i);
 	}
 	end_time = high_resolution_clock::now();
 	time = end_time - start_time;
-	cout << "Deletion of 1M elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
+	cout << "Deletion of 1M elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n\n";
 
+
+	for (int i = 0; i < 100000; i++) {
+		tree->insert(i);
+	}
+	start_time = high_resolution_clock::now();
+	for (int i = 0; i < 100000; i++) {
+		tree->contains(-1);
+	}
+	end_time = high_resolution_clock::now();
+	time = end_time - start_time;
+	cout << "Search of 100k non-existing elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
+	tree->clear();
 
 	for (int i = 0; i < 1000000; i++) {
 		tree->insert(i);
@@ -37,53 +73,125 @@ int main() {
 	}
 	end_time = high_resolution_clock::now();
 	time = end_time - start_time;
-	cout << "Search of 1M non-existing elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
+	cout << "Search of 1M non-existing elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n\n";
+	tree->clear();
 
+
+	for (int i = 0; i < 100000; i++) {
+		tree->insert(i);
+	}
 	start_time = high_resolution_clock::now();
 	for (int i = 0; i < 1; i++) {
 		tree->sum();
 	}
 	end_time = high_resolution_clock::now();
 	time = end_time - start_time;
-	cout << "Summing up 1M elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n\n\n";
+	cout << "Summing up 100k elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
+	tree->clear();
+
+	for (int i = 0; i < 1000000; i++) {
+		tree->insert(i);
+	}
+	start_time = high_resolution_clock::now();
+	for (int i = 0; i < 1; i++) {
+		tree->sum();
+	}
+	end_time = high_resolution_clock::now();
+	time = end_time - start_time;
+	cout << "Summing up 1M elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n\n\n\n";
 	
+
+
+
 
 	AVLT<long long>* tree1 = new AVLT<long long>;
 	cout << "AVL Tree Stats:\n";
 	start_time = high_resolution_clock::now();
-	for (int i = 0; i < 1000000; i++) {
-		tree1->insert(i);
+	for (int i = 0; i < 100000; i++) {
+		tree->insert(i);
 	}
 	end_time = high_resolution_clock::now();
 	time = end_time - start_time;
-	cout << "Insertion of 1M elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
+	cout << "Insertion of 100K elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
+	tree->clear();
 
 	start_time = high_resolution_clock::now();
 	for (int i = 0; i < 1000000; i++) {
-		tree1->erase(i);
+		tree->insert(i);
 	}
 	end_time = high_resolution_clock::now();
 	time = end_time - start_time;
-	cout << "Deletion of 1M elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
+	cout << "Insertion of 1M elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n\n";
+
+
+	for (int i = 0; i < 100000; i++) {
+		tree->insert(i);
+	}
+	start_time = high_resolution_clock::now();
+	for (int i = 0; i < 100000; i++) {
+		tree->erase(i);
+	}
+	end_time = high_resolution_clock::now();
+	time = end_time - start_time;
+	cout << "Deletion of 100k elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
 
 	for (int i = 0; i < 1000000; i++) {
-		tree1->insert(i);
+		tree->insert(i);
 	}
 	start_time = high_resolution_clock::now();
 	for (int i = 0; i < 1000000; i++) {
-		tree1->contains(-1);
+		tree->erase(i);
 	}
 	end_time = high_resolution_clock::now();
 	time = end_time - start_time;
-	cout << "Search of 1M non-existing elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
+	cout << "Deletion of 1M elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n\n";
 
+
+	for (int i = 0; i < 100000; i++) {
+		tree->insert(i);
+	}
+	start_time = high_resolution_clock::now();
+	for (int i = 0; i < 100000; i++) {
+		tree->contains(-1);
+	}
+	end_time = high_resolution_clock::now();
+	time = end_time - start_time;
+	cout << "Search of 100k non-existing elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
+	tree->clear();
+
+	for (int i = 0; i < 1000000; i++) {
+		tree->insert(i);
+	}
+	start_time = high_resolution_clock::now();
+	for (int i = 0; i < 1000000; i++) {
+		tree->contains(-1);
+	}
+	end_time = high_resolution_clock::now();
+	time = end_time - start_time;
+	cout << "Search of 1M non-existing elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n\n";
+	tree->clear();
+
+
+	for (int i = 0; i < 100000; i++) {
+		tree->insert(i);
+	}
 	start_time = high_resolution_clock::now();
 	for (int i = 0; i < 1; i++) {
-		tree1->sum();
+		tree->sum();
 	}
 	end_time = high_resolution_clock::now();
 	time = end_time - start_time;
-	cout << "Summing up 1M elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
-	
+	cout << "Summing up 100k elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n";
+	tree->clear();
 
+	for (int i = 0; i < 1000000; i++) {
+		tree->insert(i);
+	}
+	start_time = high_resolution_clock::now();
+	for (int i = 0; i < 1; i++) {
+		tree->sum();
+	}
+	end_time = high_resolution_clock::now();
+	time = end_time - start_time;
+	cout << "Summing up 1M elements takes " << (duration_cast<microseconds>(time).count() / 1000.0) << " ms\n\n\n\n";
 }
